@@ -1,6 +1,32 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var APP_ID = 'xBtUzYLPkoZlkgTubmjU80fvAvshhOcZ7t5EohrB';
+var APP_KEY = 'BmdXmJ2goqIWTRe1WjrRm8fMw9L7d5NahJ96tZac';
+
+var ajaxSetupObject = _jquery2['default'].ajaxSetup({
+  headers: {
+    'X-Parse-Application-Id': APP_ID,
+    'X-Parse-Application-Key': APP_KEY
+  }
+});
+
+exports['default'] = ajaxSetupObject;
+module.exports = exports['default'];
+
+},{"jquery":3}],2:[function(require,module,exports){
+'use strict';
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _jquery = require('jquery');
@@ -15,9 +41,15 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
+var _ajax_setup = require('./ajax_setup');
+
+var _ajax_setup2 = _interopRequireDefault(_ajax_setup);
+
 console.log('Hello, World');
 
-},{"jquery":2,"moment":3,"underscore":4}],2:[function(require,module,exports){
+window.ajaxSetupObject = _ajax_setup2['default'];
+
+},{"./ajax_setup":1,"jquery":3,"moment":4,"underscore":5}],3:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9229,7 +9261,7 @@ return jQuery;
 
 }));
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.6
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -12425,7 +12457,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -13975,7 +14007,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}]},{},[1])
+},{}]},{},[2])
 
 
 //# sourceMappingURL=main.js.map

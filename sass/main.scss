@@ -5,8 +5,13 @@ body {
   background: #e2ebf3;
 }
 
+.body-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .contact-screen {
-  width: 400px;
+  width: 100%;
   border: 1px solid green;
   height: 400px;
 }
