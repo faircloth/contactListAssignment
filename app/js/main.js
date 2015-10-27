@@ -207,12 +207,12 @@ Object.defineProperty(exports, '__esModule', {
 });
 function processData(data) {
   return data.map(function (item) {
-    return '\n        <li class="contact-list-item" data-contact-id="' + item.objectId + '">' + item.FirstName + '</li>\n      ';
+    return '\n        <p class="each-contact">\n          <img class="addressBookUser" src="http://i.imgur.com/WUONFWT.png">\n          <span class="contact-list-item" data-contact-id="' + item.objectId + '">\n            ' + item.FirstName + '  ' + item.LastName + '\n          </span>\n          <br>\n        </p>\n      ';
   }).join('');
 }
 
 function AddressBookTemplate(data) {
-  return '\n    <h2>Address Book</h2>\n    <ul>' + processData(data) + '</ul>\n  ';
+  return '\n    <h2 class="top-block">Address Book</h2>\n    <div class="list-block">\n      ' + processData(data) + '\n    </div>\n  ';
 }
 
 exports['default'] = AddressBookTemplate;
