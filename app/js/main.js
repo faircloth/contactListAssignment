@@ -157,9 +157,9 @@ var Router = _backbone2['default'].Router.extend({
     var router = this;
 
     this.$el.on('click', '.contact-list-item', function (event) {
-      var $li = (0, _jquery2['default'])(event.currentTarget);
-      var contactId = $li.data('contact-id');
-      router.navigate('/addressbook/${contactId}');
+      var $contact = (0, _jquery2['default'])(event.currentTarget);
+      var contactId = $contact.data('contact-id');
+      router.navigate('/addressbook/' + contactId);
       router.showSpecificContact(contactId);
     });
   },
@@ -181,9 +181,22 @@ var Router = _backbone2['default'].Router.extend({
     });
   },
 
-  showSpecificContact: function showSpecificContact() {
+  showSpecificContact: function showSpecificContact(contactId) {
+    var _this = this;
 
-    var contact = this.contactss;
+    var contact = this.contacts.get(contactId);
+
+    if (contact) {
+      this.$el.html((0, _viewsContact_card2['default'])(contact.toJSON()));
+    } else {
+      (function () {
+        var router = _this;
+        contact = _this.contacts.add({ objectId: contactId });
+        contact.fetch().then(function () {
+          router.$el.html((0, _viewsContact_card2['default'])(contact.toJSON()));
+        });
+      })();
+    }
   },
 
   start: function start() {
@@ -225,7 +238,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 function ContactCardTemplate(data) {
-  return "\n    <h2>Contact Card</h2>\n    <ul>\n      <li>" + item.FirstName + "</li>\n      <li>" + item.LastName + "</li>\n    </ul>\n  ";
+  return "\n    <h2>Contact Card</h2>\n    <ul class=\"contact-info\">\n        <li>\n          <img class=\"addressBookUser\" src=\"http://i.imgur.com/WUONFWT.png\">\n          <span class=\"contact-list-item\" data-contact-id=\"" + data.objectId + "\">\n          " + data.FirstName + " " + data.LastName + "\n          </span>\n        </li>\n    </ul>\n  ";
 }
 
 exports["default"] = ContactCardTemplate;
