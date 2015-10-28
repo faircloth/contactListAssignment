@@ -2040,6 +2040,7 @@ body {
 
 img.addressBookUser {
   width: 25px;
+  max-height: 40px;
   padding-left: 10px; }
 
 span.contact-list-item {
@@ -2047,5 +2048,9 @@ span.contact-list-item {
 
 p.each-contact {
   border-bottom: 1px solid black; }
+
+.contact-info {
+  list-style-type: none;
+  padding: 10px; }
 
 /*# sourceMappingURL=main.css.map */

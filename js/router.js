@@ -32,15 +32,16 @@ let Router = Backbone.Router.extend({
       router.navigate(`/addressbook/${contactId}`);
       router.showSpecificContact(contactId);
     });
+
+     this.$el.on('click', 'button', function(event) {
+      let $button = $(event.currentTarget);
+      router.navigate(`/addressbook`);
+      router.showAddressBook();
+    });
   },
 
   home: function() {
     this.$el.html( HomeTemplate() );
-
-    this.$el.on('click', 'button', function(event) {
-      let $button = $(event.currentTarget);
-      router.navigate('/addressbook');
-    });
   },
 
   showAddressBook: function() {

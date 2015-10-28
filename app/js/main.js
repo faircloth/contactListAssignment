@@ -162,15 +162,16 @@ var Router = _backbone2['default'].Router.extend({
       router.navigate('/addressbook/' + contactId);
       router.showSpecificContact(contactId);
     });
-  },
-
-  home: function home() {
-    this.$el.html((0, _viewsHome2['default'])());
 
     this.$el.on('click', 'button', function (event) {
       var $button = (0, _jquery2['default'])(event.currentTarget);
       router.navigate('/addressbook');
+      router.showAddressBook();
     });
+  },
+
+  home: function home() {
+    this.$el.html((0, _viewsHome2['default'])());
   },
 
   showAddressBook: function showAddressBook() {
@@ -238,7 +239,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 function ContactCardTemplate(data) {
-  return "\n    <h2>Contact Card</h2>\n    <ul class=\"contact-info\">\n        <li>\n          <img class=\"addressBookUser\" src=\"http://i.imgur.com/WUONFWT.png\">\n          <span class=\"contact-list-item\" data-contact-id=\"" + data.objectId + "\">\n          " + data.FirstName + " " + data.LastName + "\n          </span>\n        </li>\n    </ul>\n  ";
+  return "\n    <h2>Contact Card</h2>\n    <button>\n      Back to Address Book\n    </button>\n    <ul class=\"contact-info\">\n        <li>\n          <img class=\"addressBookUser\" src=\"http://i.imgur.com/WUONFWT.png\">\n          <span class=\"contact-list-item\" data-contact-id=\"" + data.objectId + "\">\n          " + data.FirstName + " " + data.LastName + "\n          </span>\n        </li>\n        <li>\n          <img class=\"addressBookUser\" src=\"http://i.imgur.com/eiTJbNn.png\">\n          <span class=\"contact-list-item\" data-contact-id=\"" + data.objectId + "\">\n          " + data.EmailAddress + "\n          </span>\n        </li>\n        <li>\n          <img class=\"addressBookUser\" src=\"http://i.imgur.com/Uu8X443.png\">\n          <span class=\"contact-list-item\" data-contact-id=\"" + data.objectId + "\">\n          " + data.PhoneNumber + "\n          </span>\n        </li>\n    </ul>\n  ";
 }
 
 exports["default"] = ContactCardTemplate;
